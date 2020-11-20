@@ -1,0 +1,9 @@
+{
+  "modelPath": "./assets/models/Converse/Converse.fbx",
+  "diffTexturePath": [
+    "./assets/models/Converse/textures/Converse.jpg",
+    "./assets/models/Converse/textures/Converse_green.jpg",
+    "./assets/models/Converse/textures/Converse_blue.jpg"
+  ],
+  "normalTexturePath": "./assets/models/Converse/textures/Converse_normal.jpg"
+}
