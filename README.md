@@ -41,6 +41,6 @@ Project assets should be stored and maintained in `./src/assets` directory. Asse
 - [React](https://reactjs.org)
 - [threejs](https://threejs.org)
 - [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
-- [styled-components] (https://styled-components.com)
+- [styled-components](https://styled-components.com)
 - [Webpack](https://webpack.js.org)
 - Assets used in this project is free [3D model of Chuck Taylor Converse](<(https://sketchfab.com/3d-models/converse-free-bc791439d26f4dd9974819c168e12385)>) shoe and belonging textures. Credit goes to Yaroslav Karas: [https://sketchfab.com/yakaras](https://sketchfab.com/yakaras)
