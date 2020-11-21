@@ -5,6 +5,7 @@ import Ground from './components/THREE/Ground';
 import Menu from './components/UI/Menu';
 import Model from './components/THREE/Model';
 import Loader from './components/UI/Loader';
+import Title from './components/UI/Title';
 import { StateProvider, useStore } from './utils/store';
 import {
   ambientLightProps,
@@ -25,6 +26,7 @@ const App: () => JSX.Element = () => {
 
   return (
     <>
+      <Title name={data.title} />
       <Canvas
         camera={{ fov: cameraProps.fov, position: cameraProps.position }}
         colorManagement
@@ -51,7 +53,7 @@ const App: () => JSX.Element = () => {
             <Model
               data={{
                 modelPath: data.modelPath,
-                diffTexturePath: data.diffTexturePath[matIdx],
+                diffTexturePath: data.diffuseTexturePath[matIdx],
                 normalTexturePath: data.normalTexturePath,
               }}
               position={modelProps.position}
