@@ -12,6 +12,7 @@ export const MenuContainer: StyledComponent<'ul', any, {}, never> = styled.ul`
 
 interface MenuItemProps extends React.ComponentPropsWithoutRef<'li'> {
   color?: string | undefined;
+  image?: string | undefined;
 }
 
 export const MenuItem: StyledComponent<'li', any, MenuItemProps, never> = styled.li<
@@ -22,7 +23,9 @@ export const MenuItem: StyledComponent<'li', any, MenuItemProps, never> = styled
   width: 5vw;
   height: 5vw;
   position: relative;
+  
   ${({ color }) => (color ? `background-color:${color};` : '')}
+  ${({ image }) => (image ? `background: url(${image});` : '')}
 
   &:hover, &:active {
     &:before {

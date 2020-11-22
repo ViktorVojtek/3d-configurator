@@ -71,7 +71,11 @@ const App: () => JSX.Element = () => {
       <Menu
         data={[
           { color: 'red', title: 'RED' },
-          { color: 'green', title: 'GREEN' },
+          {
+            color: 'green',
+            image: 'https://scitechdaily.com/images/Carina-Nebula-2-scaled.jpg',
+            title: 'GREEN',
+          },
           { color: 'blue', title: 'BLUE' },
         ]}
       />

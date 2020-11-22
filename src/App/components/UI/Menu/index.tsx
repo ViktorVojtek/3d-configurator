@@ -17,10 +17,12 @@ const Menu: (props: MenuProps) => JSX.Element = ({ data }) => {
     dispatch({ type: 'CHANGE_MAT', payload: idx });
   };
 
-  const children: JSX.Element[] = data?.map(({ color, title }, i) => {
+  const children: JSX.Element[] = data?.map(({ color, image, title }, i) => {
+    console.log(image);
     return (
       <MenuItem
         color={color}
+        image={image}
         title={title}
         key={`${title}-${i}`}
         onClick={() => handleMenuItemClick(i)}
