@@ -31,6 +31,7 @@ const App: () => JSX.Element | null = () => {
     state: { itemIdx, matIdx },
   } = useStore();
   const [modelData, setModelData] = useState(({} as unknown) as ModelDataType);
+
   useEffect(() => {
     const handleSetModelData: () => void = () => {
       setModelData(data[itemIdx]);
