@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { CHANGE_MATERIAL, SET_ITEM_IDX, SET_PROGRESS } from './actions';
 
 type ActionType = {
-  payload: any;
+  payload: number;
   type: string;
 };
 type StateType = {
+  itemIdx: number;
   progress: number;
   matIdx: number;
 };
@@ -13,7 +15,7 @@ type StoreContext = {
   dispatch: React.Dispatch<ActionType>;
 };
 
-const initialState: StateType = { progress: 0, matIdx: 0 };
+const initialState: StateType = { itemIdx: 0, matIdx: 0, progress: 0 };
 const store: React.Context<StoreContext> = createContext<StoreContext>({
   state: initialState,
   dispatch: () => null,
@@ -24,11 +26,12 @@ const stateReducer: (state: StateType, action: ActionType) => StateType = (
   action
 ) => {
   switch (action.type) {
-    case 'CHANGE_MAT':
+    case CHANGE_MATERIAL:
       return { ...state, matIdx: action.payload };
-    case 'SET_PROGRESS':
-      console.log('STORE progres now is: ', action.payload);
+    case SET_PROGRESS:
       return { ...state, progress: action.payload };
+    case SET_ITEM_IDX:
+      return { ...state, itemIdx: action.payload };
     default:
       return state;
   }

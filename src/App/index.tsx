@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from 'react-three-fiber';
 import Controls from './components/THREE/Controls';
 import Ground from './components/THREE/Ground';
@@ -19,14 +19,30 @@ import {
 
 import * as data from '../assets/data.json';
 
-const App: () => JSX.Element = () => {
-  const {
-    state: { matIdx },
-  } = useStore();
+type ModelDataType = {
+  diffuseTexturePath: string[];
+  modelPath: string;
+  normalTexturePath: string;
+  title: string;
+};
 
-  return (
+const App: () => JSX.Element | null = () => {
+  const {
+    state: { itemIdx, matIdx },
+  } = useStore();
+  const [modelData, setModelData] = useState(({} as unknown) as ModelDataType);
+  useEffect(() => {
+    const handleSetModelData: () => void = () => {
+      setModelData(data[itemIdx]);
+    };
+
+    handleSetModelData();
+    return () => handleSetModelData();
+  }, [itemIdx]);
+
+  return Object.keys(modelData).length > 0 ? (
     <>
-      <Title name={data.title} />
+      <Title name={modelData.title} />
       <Canvas
         camera={{ fov: cameraProps.fov, position: cameraProps.position }}
         colorManagement
@@ -52,9 +68,9 @@ const App: () => JSX.Element = () => {
           <Suspense fallback={<Loader />}>
             <Model
               data={{
-                modelPath: data.modelPath,
-                diffTexturePath: data.diffuseTexturePath[matIdx],
-                normalTexturePath: data.normalTexturePath,
+                modelPath: modelData.modelPath,
+                diffTexturePath: modelData.diffuseTexturePath[matIdx],
+                normalTexturePath: modelData.normalTexturePath,
               }}
               position={modelProps.position}
               castShadow
@@ -80,7 +96,7 @@ const App: () => JSX.Element = () => {
         ]}
       />
     </>
-  );
+  ) : null;
 };
 
 export default App;
